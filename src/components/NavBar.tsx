@@ -1,11 +1,11 @@
-import { Search } from "lucide-react"
+import { Handbag, Heart, Search, User } from "lucide-react"
 import { NavLink } from "react-router-dom"
 
 const NavBar = () => {
   return (
     <header>
         <span className=" block "> Ofertas! </span>
-        <section className="flex justify-space">
+        <section className="flex space-btw">
             <nav>
                 <ul className="flex justify-center items-center gap-4 text-[0.875rem]">
                         <li>
@@ -38,13 +38,18 @@ const NavBar = () => {
                     </li>
                     <li>
                         <NavLink to='/cart'>
-                            
+                            <User />
                         </NavLink>
                     </li>
                     <li>
-                        <a href="#">
-                            
-                        </a>
+                        <NavLink to='/cart'>
+                            <Heart />
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink to='/cart'>
+                            <Handbag />
+                        </NavLink>
                     </li>
                 </ul>
         </section>
