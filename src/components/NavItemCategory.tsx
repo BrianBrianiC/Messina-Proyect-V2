@@ -16,7 +16,7 @@ const NavItemCategory = ({to, children}: NavItemProps) => {
             after:absolute 
             after:left-0 
             after:-bottom-1 
-            after:h-[1px] 
+            after:h-[2px] 
             after:w-0 
             after:bg-current 
             

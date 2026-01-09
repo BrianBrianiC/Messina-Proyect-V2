@@ -33,22 +33,35 @@ const NavBar = () => {
             ? 'bg-white shadow-sm text-black' 
             : 'bg-transparent text-white'
         }
+        relative
     `;
 
     const sideElementsClass = `
         transition-opacity duration-700
-        opacity-100 pointer-events-auto
+        opacity-100 
+        relative z-[70] 
     `;
 
+    /* --- CAMBIOS AQUÍ --- */
     const logoAnimClass = `
-        block transition-all duration-[1000ms] ease-[cubic-bezier(0.25,1,0.5,1)]
+        absolute left-1/2 -translate-x-1/2
+        
+        flex items-center justify-center
+        
+        h-[0.85em]
+        
+        overflow-hidden
+        
+        transition-all duration-[1000ms] ease-[cubic-bezier(0.25,1,0.5,1)]
+        origin-center
+        
         ${isScrolled 
-            ? 'translate-y-0 scale-100 text-black'
-            : 'translate-y-[25vh] scale-[3] md:scale-[7] text-white'
+            ? 'top-1/2 -translate-y-1/2 text-4xl text-black' 
+            : 'top-[50vh] -translate-y-[80%] text-[30vh] md:text-[35vh] text-white' 
         }
+        
         ${!isScrolled && isHovered ? '!text-black' : ''}
     `;
-
 
     const iconHoverClass = 'hover:scale-110 transition-transform hover:fill-black ';
 
@@ -75,12 +88,22 @@ const NavBar = () => {
                         </ul>
                     </nav>
 
-                    <div className="flex-none text-center relative z-[60]">
-                        <NavLink to="/" className="no-underline group">
-                            <span className={`text-4xl font-logo font-semibold tracking-tighter uppercase ${logoAnimClass}`}>
+                    <div className="flex-none relative z-[60] pointer-events-none select-none w-[200px] md:w-[280px] h-full">
+                        
+                        <NavLink 
+                            to="/" 
+                            className={`no-underline group pointer-events-auto ${logoAnimClass}`}
+                        >
+                            {/* CAMBIO CRÍTICO 2: 
+                                Quitamos el -translate-y-[12%] porque ahora confiamos en 
+                                que 'flex items-center' del padre lo centre en la nueva caja más alta. 
+                                Solo dejamos leading-none para limpiar.
+                            */}
+                            <span className="block font-logo font-semibold tracking-tighter uppercase leading-none">
                                 Messina
                             </span>
                         </NavLink>
+
                     </div>
 
                     <ul className={`flex-1 flex justify-end items-center gap-4 ${sideElementsClass}`}>
